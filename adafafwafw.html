@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Размытый Контейнер</title>
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000; /* Черный фон для контраста */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1; /* Помещаем фон под контент */
+  background-image: url('https://i.pinimg.com/originals/30/28/86/302886f0e11208bba2d4daa565e85e4c.gif'); /* Замените на ссылку */
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px); /* Размытие фона */
+  opacity: 0.5; /* Небольшая прозрачность */
+}
+
+
+.container {
+    position: up;
+    background-color: rgba(128, 128, 128, 0.3); /* Очень прозрачный серый */
+    border: 1px solid white; /* Белая обводка */
+    border-radius: 15px; /* Закругленные края контейнера */
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.9); /* Фиолетовое свечение */
+    padding: 20px; /* Отступы внутри контейнера */
+    text-align: center;
+    max-width: 600px;
+    min-width: 400px;
+    width: 80%;
+}
+
+.container img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 350px; /* Максимальный размер изображения */
+  border-radius: 10px; /* Закругленные края изображения */
+  margin-bottom: 20px; /* Отступ от изображения */
+}
+
+.container p {
+    font-family: monospace;
+    color: white;
+    font-size: 1em;
+    white-space: pre-wrap; /* Перенос строк в тексте */
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://i.pinimg.com/originals/fc/4b/c0/fc4bc0c2d69dd94b155bfc96b7a6e6ed.gif" alt="Изображение"> <!-- Замените на ссылку -->
+    <p>
+      Этот текст будет расположен в контейнере и использовать monospace шрифт.<br><br>
+      Можно добавлять больше текста, он будет переноситься на новые строки.<br>
+    </p>
+  </div>
+
+</body>
+</html>
