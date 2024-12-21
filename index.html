@@ -3,74 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Размытый Контейнер</title>
+<title>Мой сайт</title>
 <style>
 body {
-    margin: 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #000; /* Черный фон для контраста */
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1; /* Помещаем фон под контент */
-  background-image: url('https://i.pinimg.com/originals/30/28/86/302886f0e11208bba2d4daa565e85e4c.gif'); /* Замените на ссылку */
+  margin: 10px; /* Отступ от краев браузера */
+  font-family: monospace;
+  background-image: url('https://0x0.st/s/tjFYBkAPYmiGha3_xpoqqg/XFYQ.jpg'); /* Замените на путь к вашему изображению */
   background-size: cover;
-  background-position: center;
-  filter: blur(6px); /* Размытие фона */
-  opacity: 0.5; /* Небольшая прозрачность */
+  overflow-x: hidden; /* Предотвращение горизонтальной прокрутки */
 }
 
-
-.container {
-    background-color: rgba(128, 128, 128, 0.3); /* Очень прозрачный серый */
-    border: 1px solid white; /* Белая обводка */
-    border-radius: 15px; /* Закругленные края контейнера */
-    box-shadow: 0 0 15px rgba(128, 0, 128, 0.9); /* Фиолетовое свечение */
-    padding: 20px; /* Отступы внутри контейнера */
-    text-align: center;
-    max-width: 600px;
-    min-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-}
-
-.container img {
+.profile-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5); /* Свечение */
+  overflow: hidden;
+  margin: 20px auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 350px; /* Максимальный размер изображения */
-  border-radius: 10px; /* Закругленные края изображения */
-  margin-bottom: 20px; /* Отступ от изображения */
 }
 
-.container p {
-    font-family: monospace;
-    color: white;
-    font-size: 1em;
-    white-space: pre-wrap; /* Перенос строк в тексте */
+.profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px rgba(255,255,255,0.5); /* Свечение */
+}
+
+
+.black-container {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 0 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3); /* Свечение */
+  backdrop-filter: blur(5px); /* Размытие фона */
+}
+
+.stats-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin: 20px 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3); /* Свечение */
+}
+
+.stats-container p {
+    text-shadow: 0 0 5px rgba(255,255,255,0.5); /* Свечение */
+}
+
+/* Для адаптивности - пример.  Может потребоваться более тонкая настройка */
+@media (max-width: 768px) {
+  .profile-circle {
+    width: 100px;
+    height: 100px;
+  }
+  .black-container {
+    padding: 10px;
+  }
 }
 </style>
 </head>
 <body>
 
-  <div class="container">
-    <img src="https://i.pinimg.com/originals/fc/4b/c0/fc4bc0c2d69dd94b155bfc96b7a6e6ed.gif" alt="Изображение"> <!-- Замените на ссылку -->
-    <p>
-      Этот текст будет расположен в контейнере и использовать monospace шрифт.<br><br>
-      Можно добавлять больше текста, он будет переноситься на новые строки.<br>
-    </p>
-  </div>
+<div class="profile-circle">
+  <img src="https://0x0.st/s/tjFYBkAPYmiGha3_xpoqqg/XFYQ.jpg" alt="Профиль">  <!-- Замените на путь к вашему изображению -->
+</div>
+
+<h1>Заголовок сайта</h1>
+
+<div class="black-container">
+  <p>Текст в черном контейнере.</p>
+</div>
+
+<div class="stats-container">
+  <p>👁️ Просмотры: <span id="view-count">0</span></p>
+</div>
+
+<script>
+  let viewCount = localStorage.getItem('viewCount') || 0; // Получаем значение из localStorage или устанавливаем 0
+  viewCount++;
+  localStorage.setItem('viewCount', viewCount); // Сохраняем в localStorage
+  document.getElementById('view-count').textContent = viewCount;
+</script>
 
 </body>
 </html>
